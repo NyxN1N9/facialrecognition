@@ -1,29 +1,19 @@
 .App {
   text-align: center;
+  background-position: fixed;
 }
 
 .center {
   display: inline-flex;
   justify-content: center;
 }
-.zin {
-  z-index: 0;
-}
+
 #tsparticles {
-  z-index: 0;
+  position: fixed;
+  z-index: -1;
 }
 
 /*-- particles settings --*/
-body {
-  margin: 0;
-  font:normal 75% Arial, Helvetica, sans-serif;
-  z-index: 0;
-}
-
-canvas {
-  display: block;
-  z-index: -1;
-}
   /*verticle-align: bottom;*/
 
 /* ---- particles.js container ---- */

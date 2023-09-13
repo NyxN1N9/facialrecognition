@@ -18,8 +18,8 @@ function App() {
   }, []);
   return (
     <>
-      <div className='App'>,
-      <Particles
+        <div className='App'>,
+        <Particles
             id="tsparticles"
             init={particlesInit}
             loaded={particlesLoaded}
@@ -93,10 +93,9 @@ function App() {
                     },
                 },
                 detectRetina: true,
-            }}
-        />
+        }}/>,
         <Navigation />,
-        <Logo />,
+        <Logo />,       
         <Rank />,
         <ImageLinkForm />
         {/*<FaceRecognition /> */}
