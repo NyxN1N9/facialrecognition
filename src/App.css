@@ -8,11 +8,6 @@
   justify-content: center;
 }
 
-#tsparticles {
-  position: fixed;
-  z-index: -1;
-}
-
 /*-- particles settings --*/
   /*verticle-align: bottom;*/
 

@@ -1,4 +1,4 @@
-import { Tilt } from 'react-tilt';
+import Tilt from 'react-parallax-tilt';
 import brain from './brain.png';
 import './Logo.css';
 
