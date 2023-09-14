@@ -6,6 +6,7 @@ import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank.jsx';
 import './App.css';
+import './index.css';
 
 // class component from video walk thru //
 class App extends Component {
@@ -25,7 +26,10 @@ class App extends Component {
         return(
             <>
                 <div className ="App">
-                    <ParticlesBg type="cobweb" bg={true} />
+                    <ParticlesBg 
+                            type="color"                   bg={true} 
+                            color = "random #ff0000"
+                            />
                     <Navigation />
                     <Logo />
                     <Rank />
