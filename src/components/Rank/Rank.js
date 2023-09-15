@@ -1,4 +1,4 @@
-import './Rank';
+import './Rank.js';
 
 const Rank = () => {
     return (
