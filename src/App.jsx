@@ -12,14 +12,15 @@ import './index.css';
 class App extends Component {
     constructor(){
         super();
-        this.sate = {
+        this.state = {
             input: "",
         }
     }
     onInputChange = (event) => {
         console.log(event.target.value);
     }
-    onButtonSubmit = () => {
+    onButtonSubmit = (event) => {
+        console.log(event.target.value);
         console.log('click');
     }
     render(){
@@ -27,9 +28,10 @@ class App extends Component {
             <>
                 <div className ="App">
                     <ParticlesBg 
-                            type="color"                   bg={true} 
-                            color = "random #ff0000"
-                            />
+                        type="color"                   
+                        bg={true} 
+                        color = "random #ff0000"
+                    />
                     <Navigation />
                     <Logo />
                     <Rank />
