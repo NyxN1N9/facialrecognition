@@ -13,12 +13,14 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "nth-check": "^2.1.1",
     "browserlist": "^1.0.1",
     "clarifai": "^2.9.1",
     "particles-bg": "^2.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-parallax-tilt": "^1.7.166",
+    "react-scripts": "^5.0.1",
     "tachyons": "^4.12.0"
   },
   "devDependencies": {
@@ -30,5 +32,17 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "vite": "^4.4.9"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

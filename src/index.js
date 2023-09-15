@@ -1,6 +1,6 @@
 /* index.js file aka Main.jsx*/
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './App.js';
 import './index.css';
 import 'tachyons';
 
