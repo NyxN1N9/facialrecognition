@@ -10,6 +10,21 @@ import "./index.css";
 
 // class component from video walk thru //
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      input: "",
+    };
+  }
+
+  onInputChange = (event) => {
+    console.log(event.target.value); // to get value
+  };
+
+  onButtonSubmit = () => {
+    console.log('click');
+  }
+
   render() {
     return (
       <>
@@ -18,7 +33,8 @@ class App extends Component {
           <Navigation />,
           <Logo />,
           <Rank />,
-          <ImageLinkForm />,{/*<FaceRecognition />*/}
+          <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />,
+          {/*<FaceRecognition />*/}
         </div>
       </>
     );
