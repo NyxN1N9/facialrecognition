@@ -1,25 +1,69 @@
+/* eslint-disable no-unused-vars */
 import { Component } from "react";
 import ParticlesBg from "particles-bg";
 import Logo from "./components/Logo/Logo.js";
 import Rank from "./components/Rank/Rank.js";
 import Navigation from "./components/Navigation/Navigation.js";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm.js";
-import Clarifai from "clarifai";
+//import Clarifai from "clarifai";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 import Signin from "./components/Signin/Signin.js";
 import Register from "./components/Register/Register.js";
 import "./App.css";
 
+/* const app = new Clarifai.App({
+  apiKey: "6601253eeca34af490181c57d58583a3",
+}); */
+
+const returnClarifaiRequestOptions = (imageUrl) => {
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+  // In this section, we set the user authentication, user and app ID, model details, and the URL
+  // of the image we want as an input. Change these strings to run your own example.
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  // Your PAT (Personal Access Token) can be found in the portal under Authentification
+  const PAT = "4d6d9938d4be4bf9a07991a6e906610b";
+  // Specify the correct user_id/app_id pairings
+  // Since you're making inferences outside your app's scope
+  const USER_ID = "nyxn1n9";
+  const APP_ID = "Facial_Recognition";
+  // Change these to whatever model and image URL you want to use
+  const MODEL_ID = "face-detection";
+  const IMAGE_URL = imageUrl;
+  const raw = JSON.stringify({
+    user_app_id: {
+      user_id: USER_ID,
+      app_id: APP_ID,
+    },
+    inputs: [
+      {
+        data: {
+          image: {
+            url: imageUrl,
+          },
+        },
+      },
+    ],
+  });
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      Authorization: "Key " + PAT,
+    },
+    body: raw,
+  };
+  return requestOptions;
+};
 // class component from video walk thru //
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       input: "",
       imageUrl: "",
       box: {},
-      route: "signin",
-      isSignedIn: false,
+      route: "home",
+      isSignedIn: true,
       user: {
         id: "",
         name: "",
@@ -49,8 +93,8 @@ class App extends Component {
     const width = Number(image.width);
     const height = Number(image.height);
     return {
-      leftCol: (clarifaiFace.left_col = width),
-      topRow: (clarifaiFace.top_row = height),
+      leftCol: clarifaiFace.left_col * width,
+      topRow: clarifaiFace.top_row * height,
       rightCol: width - clarifaiFace.right_col * width,
       bottomRow: height - clarifaiFace.bottom_row * height,
     };
@@ -59,32 +103,22 @@ class App extends Component {
   displayFaceBox = (box) => {
     this.setState({ box: box });
   };
-
   // event: input search box //
   onInputChange = (event) => {
-    this.setState({ input: event.target.value }); // to get value //
-  };
-  // event: 'click' detect btn //
+    this.setState({ input: event.target.value });
+  }; // to get value //
+  // NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
+  // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
+  // this will default to the latest version_id
+
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    // this is where clarifai docs code goes //
-    // second code input for model predict code//
-    const app = new Clarifai.App({
-      apiKey: "6601253eeca34af490181c57d58583a3",
-    }); 
-    
-    app.models
-      .predict(Clarifai.FACE_DECTECT_MODEL, this.state.input)
-      // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
-      // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
-      // for the Face Detect Mode: https://www.clarifai.com/models/face-detection
-      // If that isn't working, then that means you will have to wait until their servers are back up. Another solution
-      // is to use a different version of their model that works like the ones found here: https://github.com/Clarifai/clarifai-javascript/blob/master/src/index.js
-      // so you would change from:
-      // .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-      // to:
-      // .predict('53e1df302c079b3db8a0a36033ed2d15', this.state.input)
-
+    /* app.models.predict("face-detection, this.state.input") */
+    fetch(
+      "https://api.clarifai.com/v2/models/" + "face-detection" + "/outputs",
+      returnClarifaiRequestOptions(this.state.input)
+    )
+      .then((response) => response.json())
       .then((response) => {
         console.log("hi", response);
         if (response) {
@@ -119,7 +153,10 @@ class App extends Component {
     return (
       <div className="App">
         <ParticlesBg color="#000000" num={200} type="cobweb" bg={true} />
-        <Navigation isSignIn={isSignedIn} onRouteChange={this.onRouteChange} />
+        <Navigation
+          isSignedIn={isSignedIn}
+          onRouteChange={this.onRouteChange}
+        />
         {route === "home" ? (
           <div>
             <Logo />
