@@ -10,10 +10,6 @@ import Signin from "./components/Signin/Signin.js";
 import Register from "./components/Register/Register.js";
 import "./App.css";
 
-const app = new Clarifai.App({
-  apiKey: "6601253eeca34af490181c57d58583a3",
-});
-
 // class component from video walk thru //
 class App extends Component {
   constructor() {
@@ -72,7 +68,11 @@ class App extends Component {
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     // this is where clarifai docs code goes //
-    // second code input for model predict code
+    // second code input for model predict code//
+    const app = new Clarifai.App({
+      apiKey: "6601253eeca34af490181c57d58583a3",
+    }); 
+    
     app.models
       .predict(Clarifai.FACE_DECTECT_MODEL, this.state.input)
       // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
