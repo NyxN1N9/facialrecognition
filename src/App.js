@@ -11,7 +11,7 @@ import Register from "./components/Register/Register.js";
 import "./App.css";
 
 const app = new Clarifai.App({
-  apiKey: "MY API KEY GOES HERE",
+  apiKey: "6601253eeca34af490181c57d58583a3",
 });
 
 // class component from video walk thru //
@@ -68,26 +68,23 @@ class App extends Component {
   onInputChange = (event) => {
     this.setState({ input: event.target.value }); // to get value //
   };
-
   // event: 'click' detect btn //
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     // this is where clarifai docs code goes //
     // second code input for model predict code
     app.models
-      .predict(
-        // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
-        // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
-        // for the Face Detect Mode: https://www.clarifai.com/models/face-detection
-        // If that isn't working, then that means you will have to wait until their servers are back up. Another solution
-        // is to use a different version of their model that works like the ones found here: https://github.com/Clarifai/clarifai-javascript/blob/master/src/index.js
-        // so you would change from:
-        // .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
-        // to:
-        // .predict('53e1df302c079b3db8a0a36033ed2d15', this.state.input)
-        Clarifai.FACE_DECTECT_MODEL,
-        this.state.input
-      )
+      .predict(Clarifai.FACE_DECTECT_MODEL, this.state.input)
+      // HEADS UP! Sometimes the Clarifai Models can be down or not working as they are constantly getting updated.
+      // A good way to check if the model you are using is up, is to check them on the clarifai website. For example,
+      // for the Face Detect Mode: https://www.clarifai.com/models/face-detection
+      // If that isn't working, then that means you will have to wait until their servers are back up. Another solution
+      // is to use a different version of their model that works like the ones found here: https://github.com/Clarifai/clarifai-javascript/blob/master/src/index.js
+      // so you would change from:
+      // .predict(Clarifai.FACE_DETECT_MODEL, this.state.input)
+      // to:
+      // .predict('53e1df302c079b3db8a0a36033ed2d15', this.state.input)
+
       .then((response) => {
         console.log("hi", response);
         if (response) {
