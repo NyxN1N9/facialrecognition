@@ -108,7 +108,7 @@ const initialState = { // signin page setting state and route
     }
           
     onButtonSubmit = () => { // when submit is clicked 
-      this.setState({ imageUrl: this.state.input }); //sets state and input as imageUrl
+      this.setState({ imageUrl: this.state.input }) // sets state and input as imageUrl
 // from documentation //
       fetch("http://api.clarifai.com/v2/models/" + "face-detection" + "/outputs/", returnClarifaiRequestOptions(this.state.input)) //retrieves the api model info and returns the state and input
         .then(response => response.json()) // json translates data and returns it
