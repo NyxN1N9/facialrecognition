@@ -19,12 +19,12 @@ const FaceRecognition = ({ imageUrl, box }) => {
             top: box.topRow,
             right: box.rightCol,
             bottom: box.bottomRow,
-            left: box.leftCol,
+            left: box.leftCol
           }}
         ></div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default FaceRecognition;
