@@ -1,0 +1,13 @@
+ztm apps in git hub by order
+face-recognition-brain https://github.com/aneagoie/face-recognition-brain
+  diff app.js code for clarifai
+
+smart-brain
+  diff app.js code initial state
+  diff classApp using initial state
+
+smart-brain-api
+- backend
+
+face-recognition-brain-api
+- backend server

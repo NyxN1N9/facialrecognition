@@ -7,28 +7,50 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "react-scripts start",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/plugin-transform-private-property-in-object": "^7.22.11",
+    "@svgr/plugin-svgo": "^8.1.0",
+    "@svgr/webpack": "^8.1.0",
+    "browserify": "^17.0.0",
+    "browserlist": "^1.0.1",
+    "clarifai": "^2.9.1",
+    "css-select": "^5.1.0",
+    "nth-check": "^2.1.1",
     "particles-bg": "^2.5.5",
-    "particles.js": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-particles-js": "^3.6.0",
-    "react-tilt": "^1.0.2",
-    "react-tsparticles": "^2.12.2",
-    "tachyons": "^4.12.0",
-    "tsparticles": "^2.12.0",
-    "tsparticles-engine": "^2.12.0"
+    "react-parallax-tilt": "^1.7.166",
+    "react-scripts": "^5.0.1",
+    "svgo": "^3.0.2",
+    "tachyons": "^4.12.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.15",
+    "@babel/plugin-transform-private-property-in-object": "^7.22.11",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react": "^7.32.2",
+    "@vitejs/plugin-react": "^4.0.4",
+    "eslint": "^8.49.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "vite": "^4.4.5"
+    "vite": "^4.4.9"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
