@@ -55,23 +55,30 @@ const initialState = { // signin page setting state and route
   input: '',
   imageUrl: '',
   box: {},
-  route: 'home',
-  isSignedIn: false,
-  user: {
+  route: 'signin',
+  isSignedIn: false
+  /* user: {
     id: 'id',
     name: '',
     email: '',
     entries: 0,
     joined: ''
-  }
+  } */
 };
 
 // App Component //
   class App extends Component {
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       this.state = initialState;
     }
+    /* 
+    check function
+    componentDidMount() {
+      fetch("http://localhost:3001/")
+        .then(response => response.json())
+        .then(console.log);
+    } */
 
     loadUser = (data) => { // loads user data
       this.setState({
@@ -134,7 +141,7 @@ const initialState = { // signin page setting state and route
     }
 
     onRouteChange = (route) => { // when page changes
-      if (route === "signout") { // first page is signout aslo initial state
+      if (route === "signout") { // first page is signout also initial state
         this.setState(initialState);
       } else if (route === "home") { // if route is home user is signed in
         this.setState({ isSignedIn: true });
