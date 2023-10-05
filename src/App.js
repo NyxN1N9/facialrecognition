@@ -56,14 +56,14 @@ const initialState = { // signin page setting state and route
   imageUrl: '',
   box: {},
   route: 'signin',
-  isSignedIn: false
-  /* user: {
+  isSignedIn: false,
+  user: {
     id: 'id',
     name: '',
     email: '',
     entries: 0,
     joined: ''
-  } */
+  }
 };
 
 // App Component //

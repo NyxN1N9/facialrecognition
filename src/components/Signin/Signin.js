@@ -20,7 +20,7 @@ class Signin extends Component {
 
   onSubmitSignIn = () => {
     console.log(this.state);
-    this.onRouteChange("home");
+    this.onRouteChange = "home";
   };
   /* fetch("http://localhost:3000/signin", {
       method: "post",
