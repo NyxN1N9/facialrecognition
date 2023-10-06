@@ -20,7 +20,7 @@ class Signin extends Component {
 
   onSubmitSignIn = () => {
     console.log(this.state);
-    this.onRouteChange = "home";
+    this.onRouteChange = {route:"home"};
   };
   /* fetch("http://localhost:3000/signin", {
       method: "post",
@@ -39,7 +39,7 @@ class Signin extends Component {
         this.loadUser(user)
         this.props.onRouteChange("home");
       } 
-      */
+  */
 
   render() {
     const { onRouteChange } = this;
@@ -64,7 +64,7 @@ class Signin extends Component {
               <div className="mv3">
                 <label className="db fw6 lh-copy f6" htmlFor="password">
                   Password
-                </label>
+                 </label>
                 <input
                   className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
