@@ -2,8 +2,8 @@ import { Component } from "react";
 import "tachyons";
 
 class Register extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: "",
       password: "",
@@ -24,7 +24,7 @@ class Register extends Component {
   };
 
   onSubmitSignIn = () => {
-    fetch("http://localhost:3000/register", {
+    fetch("http://localhost:3001/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

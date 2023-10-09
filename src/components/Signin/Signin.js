@@ -19,27 +19,25 @@ class Signin extends Component {
   };
 
   onSubmitSignIn = () => {
-    console.log(this.state);
-    this.onRouteChange = {route:"home"};
-  };
-  /* fetch("http://localhost:3000/signin", {
+    /* console.log(this.state);
+    this.onRouteChange = { route: "home" };
+  }; */
+    fetch("http://localhost:3001/signin", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.signInEmail,
-        password: this.state.signInPassword
-      })
+        password: this.state.signInPassword,
+      }),
     })
-    this.onRouteChange("home");
-  }; 
-  */
-  /* .then((response) => response.json())
-    .then((user) => {
-      if (user.id) {
-        this.loadUser(user)
-        this.props.onRouteChange("home");
-      } 
-  */
+      .then((response) => response.json())
+      .then((user) => {
+        if (user.id) {
+          this.loadUser(user);
+          this.onRouteChange("home");
+        }
+      });
+  };
 
   render() {
     const { onRouteChange } = this;
@@ -64,7 +62,7 @@ class Signin extends Component {
               <div className="mv3">
                 <label className="db fw6 lh-copy f6" htmlFor="password">
                   Password
-                 </label>
+                </label>
                 <input
                   className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   type="password"
