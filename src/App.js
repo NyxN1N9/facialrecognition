@@ -8,11 +8,6 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 import Signin from "./components/Signin/Signin.js";
 import Register from "./components/Register/Register.js";
 import "./App.css";
-//import ParticlesJS from "particles.js";
-//particlesJS.load(@dom-id, @path-json, @callback (optional));
-/* particlesJS.load("particles-js", "assets/particles.json", function () {
-  console.log("callback - particles-js config loaded")
-}) */
 
 const returnClarifaiRequestOptions = (imageUrl) => {
   const PAT = "4d6d9938d4be4bf9a07991a6e906610b";
