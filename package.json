@@ -23,6 +23,7 @@
     "css-select": "^5.1.0",
     "nth-check": "^2.1.1",
     "particles-bg": "^2.5.5",
+    "particles.js": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-parallax-tilt": "^1.7.166",

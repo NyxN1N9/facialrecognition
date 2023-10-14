@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Component } from "react";
 import "tachyons";
 
@@ -11,10 +12,6 @@ class Register extends Component {
     };
   }
 
-  onNameChange = (event) => {
-    this.setState({ name: event.target.value });
-  };
-
   onEmailChange = (event) => {
     this.setState({ email: event.target.value });
   };
@@ -23,8 +20,12 @@ class Register extends Component {
     this.setState({ password: event.target.value });
   };
 
+  onNameChange = (event) => {
+    this.setState({ name: event.target.value });
+  };
+
   onSubmitSignIn = () => {
-    fetch("http://localhost:3001/register", {
+    fetch("http://localhost:3000/register", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -33,14 +34,14 @@ class Register extends Component {
         name: this.state.name,
       }),
     })
-      .then((response) => response.json())
-      .then((user) => {
-        if (user) {
-          this.loadUser(user);
-          this.onRouteChange("home");
+      .then(response => response.json())
+      .then(user => {
+        {
+          this.props.loadUser(user);
+          this.props.onRouteChange("home");
         }
-      });
-  };
+      })
+  }
 
   render() {
     return (
