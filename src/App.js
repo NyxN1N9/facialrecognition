@@ -74,8 +74,7 @@ class App extends Component {
   };
   //calculates the edges of the bounding_box for image faces
   calculateFaceLocation = (data) => {
-    const clarifaiFace =
-      data.outputs[length].data.regions[length].region_info.bounding_box;
+    const clarifaiFace = data.outputs[length].data.regions[length].region_info.bounding_box;
     const image = document.getElementById("inputimage");
     const width = Number(image.width);
     const height = Number(image.height);
