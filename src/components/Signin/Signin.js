@@ -79,11 +79,10 @@ class Signin extends Component {
                 value="Sign in"
               />
             </div>
-            {/* //className="lh-copy mt3" // */}
-            <div>
+            <div className="lh-copy mt3">
               <p
                 onClick={() => onRouteChange("register")}
-                className="f6 link dim black underline pa3 pointer"
+                className="f6 link dim black db pointer"
               >
                 Register
               </p>

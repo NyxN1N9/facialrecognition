@@ -41,24 +41,26 @@ const returnClarifaiRequestOptions = (imageUrl) => {
   };
   return requestOptions;
 };
+
+const initialState = {
+    input: "",
+    imageUrl: "",
+    box: {},
+    route: "signin",
+    isSignedIn: false,
+    user: {
+      id: "",
+      name: "",
+      email: "",
+      entries: 0,
+      joined: "",
+    }
+}
 // App Component //
 class App extends Component {
   constructor() {
     super();
-    this.state = {
-      input: "",
-      imageUrl: "",
-      box: {},
-      route: "signin",
-      isSignedIn: false,
-      user: {
-        id: "",
-        name: "",
-        email: "",
-        entries: 0,
-        joined: "",
-      }
-    }
+    this.state = initialState; 
   }
   //loads user data
   loadUser = (data) => {
@@ -127,7 +129,7 @@ class App extends Component {
     //when route/page changes
     if (route === "signout") {
       //first page is signout also initial state
-      this.setState({ isSignedIn: false }); //initialState
+      this.setState(initialState)//initialState
     } else if (route === "home") {
       //if route is home user is signed in
       this.setState({ isSignedIn: true });
