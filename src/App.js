@@ -9,38 +9,7 @@ import Signin from "./components/Signin/Signin.js";
 import Register from "./components/Register/Register.js";
 import "./App.css";
 
-const returnClarifaiRequestOptions = (imageUrl) => {
-  const PAT = "4d6d9938d4be4bf9a07991a6e906610b";
-  const USER_ID = "nyxn1n9";
-  const APP_ID = "Facial_Recognition";
-  //const MODEL_ID = "face-detection";
-  const IMAGE_URL = imageUrl;
 
-  const raw = JSON.stringify({
-    "user_app_id": {
-      "user_id": USER_ID,
-      "app_id": APP_ID,
-    },
-    "inputs": [
-      {
-        "data": {
-          "image": {
-            "url": IMAGE_URL,
-          },
-        },
-      },
-    ],
-  });
-  const requestOptions = {
-    method: "POST",
-    headers: {
-      "Accept": "application/json",
-      "Authorization": "Key " + PAT,
-    },
-    body: raw,
-  };
-  return requestOptions;
-};
 
 const initialState = {
     input: "",
@@ -83,8 +52,8 @@ class App extends Component {
     return {
       leftCol: clarifaiFace.left_col * width,
       topRow: clarifaiFace.top_row * height,
-      rightCol: width - clarifaiFace.right_col * width,
-      bottomRow: height - clarifaiFace.bottom_row * height,
+      rightCol: width - (clarifaiFace.right_col * width),
+      bottomRow: height - (clarifaiFace.bottom_row * height)
     };
   };
   //bounding box
@@ -99,37 +68,41 @@ class App extends Component {
   onImageSubmit = () => {
     this.setState({ imageUrl: this.state.input }); //sets state and input as imageUrl
     // updated Clarifai/ VIDEO: FACE DETECTION BOX //
-    fetch(
-      "https://api.clarifai.com/v2/models/" + "face-detection" + "/outputs",
-      returnClarifaiRequestOptions(this.state.input)
-    )
-      .then(response => response.json())
-      .then(response => {
-        if (response) {
-          fetch("http://localhost:3000/image", {
-            method: "put",
-            headers: {
-              "Content-Type": "application/json",
+    fetch("http://localhost:3000/imageurl", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              id: this.state.user.id,
-            }),
-          })
-            .then(response => response.json())
-            .then(count => {
-              this.setState(Object.assign(this.state.user, { entries: count }))
-            })
-        }
-        this.displayFaceBox(this.calculateFaceLocation(response));
+      body: JSON.stringify({
+        input: this.state.input
       })
-      .catch((err) => console.log(err));
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response) {
+        fetch("http://localhost:3000/image", {
+          method: "put",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: this.state.user.id
+          })
+        })
+        .then(response => response.json())
+        .then(count => {
+          this.setState(Object.assign(this.state.user, { entries: count }))
+        })
+        .catch(console.log)
+      }
+      this.displayFaceBox(this.calculateFaceLocation(response));
+    })
+    .catch((err) => console.log(err));
   };
 
   onRouteChange = (route) => {
     //when route/page changes
     if (route === "signout") {
       //first page is signout also initial state
-      this.setState(initialState)//initialState
+      this.setState(initialState)
     } else if (route === "home") {
       //if route is home user is signed in
       this.setState({ isSignedIn: true });
