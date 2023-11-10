@@ -1,36 +1,36 @@
 import { Component } from "react";
 import ParticlesBg from "particles-bg";
-import Logo from "./components/Logo/Logo.js";
-import Rank from "./components/Rank/Rank.js";
-import Navigation from "./components/Navigation/Navigation.js";
-import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm.js";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
+import Navigation from "./components/Navigation/Navigation.js";
 import Signin from "./components/Signin/Signin.js";
 import Register from "./components/Register/Register.js";
+import Logo from "./components/Logo/Logo.js";
+import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm.js";
+import Rank from "./components/Rank/Rank.js";
 import "./App.css";
 
-
-
 const initialState = {
-    input: "",
-    imageUrl: "",
-    box: {},
-    route: "signin",
-    isSignedIn: false,
-    user: {
-      id: "",
-      name: "",
-      email: "",
-      entries: 0,
-      joined: "",
-    }
-}
+  input: "",
+  imageUrl: "",
+  box: {},
+  route: "signin",
+  isSignedIn: false,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: "",
+  }
+};
+
 // App Component //
 class App extends Component {
   constructor() {
     super();
     this.state = initialState; 
   }
+
   //loads user data
   loadUser = (data) => {
     this.setState({
@@ -43,6 +43,7 @@ class App extends Component {
       }
     })
   };
+
   //calculates the edges of the bounding_box for image faces
   calculateFaceLocation = (data) => {
     const clarifaiFace = data.outputs[length].data.regions[length].region_info.bounding_box;
@@ -56,19 +57,21 @@ class App extends Component {
       bottomRow: height - (clarifaiFace.bottom_row * height)
     };
   };
+
   //bounding box
   displayFaceBox = (box) => {
     this.setState({ box: box });
   };
+
   //input values
   onInputChange = (event) => {
     this.setState({ input: event.target.value });
   };
+
   //when submit is clicked
   onImageSubmit = () => {
-    this.setState({ imageUrl: this.state.input }); //sets state and input as imageUrl
-    // updated Clarifai/ VIDEO: FACE DETECTION BOX //
-    fetch("http://localhost:3000/imageurl", {
+    this.setState({ imageUrl: this.state.input });
+    fetch("https://smartbrainapi-mxdx.onrender.com//imageurl", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +83,7 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
       if (response) {
-        fetch("http://localhost:3000/image", {
+        fetch("https://smartbrainapi-mxdx.onrender.com/image", {
           method: "put",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
