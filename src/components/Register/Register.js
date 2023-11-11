@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Component } from "react";
-import "tachyons";
 
 class Register extends Component {
   constructor(props) {

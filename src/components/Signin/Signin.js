@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Component } from "react";
-import "tachyons";
 
 //const onRouteChange = ({ onRouteChange });
 class Signin extends Component {
@@ -9,7 +8,7 @@ class Signin extends Component {
     this.state = {
       signInEmail: "",
       signInPassword: "",
-    };
+    }
   }
 
   onEmailChange = (event) => {
@@ -36,7 +35,7 @@ class Signin extends Component {
           this.props.onRouteChange("home");
         }
       })
-  }
+  };
 
   render() {
     const { onRouteChange } = this.props;
@@ -90,7 +89,7 @@ class Signin extends Component {
           </div>
         </main>
       </article>
-    );
+    )
   }
 }
 
