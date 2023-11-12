@@ -71,8 +71,8 @@ class App extends Component {
   //when submit is clicked
   onImageSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch("http://localhost:3000/imageurl", {
-   /*  fetch("https://smartbrainapi-mxdx.onrender.com/imageurl", { */
+    /* fetch("http://localhost:3000/imageurl", { */
+    fetch("https://smartbrainapi-mxdx.onrender.com/imageurl", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
