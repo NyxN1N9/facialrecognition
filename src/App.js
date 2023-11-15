@@ -10,7 +10,7 @@ import Rank from "./components/Rank/Rank.js";
 import "./App.css";
 
 const initialState = {
-  input: "",
+  input: "", 
   imageUrl: "",
   box: {},
   route: "signin",
