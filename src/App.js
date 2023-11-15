@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from "react-dom/client";
 import ParticlesBg from "particles-bg";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 import Navigation from "./components/Navigation/Navigation.js";
@@ -120,13 +120,13 @@ class App extends Component {
     const { isSignedIn, imageUrl, route, box } = this.state;
     return (
       //return all attributes of the App
-      <div className="App">
+        <div className="App">
         <ParticlesBg color="#000000" num={200} type="cobweb" bg={true} />
         <Navigation
           isSignedIn={isSignedIn}
           onRouteChange={this.onRouteChange}
         />
-        {route === "home" ? 
+        {route === "home" ?
           <div>
             <Logo />
             <Rank
@@ -136,19 +136,13 @@ class App extends Component {
               onInputChange={this.onInputChange}
               onImageSubmit={this.onImageSubmit}
             />
-            <FaceRecognition box={box} imageUrl={imageUrl} />
-          </div>
-         :( route === "signin" ? 
-          <Signin loadUser={this.loadUser}
-            onRouteChange={this.onRouteChange} />
-         : 
-          <Register
-            loadUser={this.loadUser}
-            onRouteChange={this.onRouteChange}
-          />
-        )}
-      </div>
-    );
+            <FaceRecognition box={box} imageUrl={imageUrl}/>
+          </div> : (route === "signin" ? <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
+          : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}
+            />
+          )}
+        </div>
+    )
   }
 }
 
