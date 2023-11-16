@@ -1,4 +1,4 @@
-import { Component } from "react-dom/client";
+import { Component } from "react";
 import ParticlesBg from "particles-bg";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition.js";
 import Navigation from "./components/Navigation/Navigation.js";
