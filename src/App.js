@@ -42,7 +42,7 @@ class App extends Component {
         joined: data.joined
       }
     })
-  };
+	};
 
   //calculates the edges of the bounding_box for image faces
   calculateFaceLocation = (data) => {
@@ -84,7 +84,7 @@ class App extends Component {
     .then(response => response.json())
     .then(response => {
       if (response) {
-        /* fetch("http://localhost:3000/image", { */
+      /* fetch("http://localhost:3000/image", { */
         fetch("https://smartbrainapi-mxdx.onrender.com/image", {
           method: "put",
           headers: { "Content-Type": "application/json" },
@@ -99,14 +99,14 @@ class App extends Component {
         .catch(console.log)
       }
       this.displayFaceBox(this.calculateFaceLocation(response))
-    })
+	})
     .catch(err => console.log(err));
   };
 
   onRouteChange = (route) => {
-    //when route/page changes
+  //when route/page changes
     if (route === "signout") {
-      //first page is signout also initial state
+    //first page is signout also initial state
       this.setState(initialState)
     } else if (route === "home") {
       //if route is home user is signed in
