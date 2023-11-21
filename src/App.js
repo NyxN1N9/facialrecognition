@@ -118,8 +118,9 @@ class App extends Component {
   render() {
     //render objects that use this.state prefix //
     const { isSignedIn, imageUrl, route, box } = this.state;
-    return (
-      //return all attributes of the App
+		return (
+		//return all attributes of the App
+			<>
         <div className="App">
         <ParticlesBg color="#000000" num={200} type="cobweb" bg={true} />
         <Navigation
@@ -141,8 +142,9 @@ class App extends Component {
           : <Register loadUser={this.loadUser} onRouteChange={this.onRouteChange}
             />
           )}
-        </div>
-    )
+				</div>
+			</>
+		)
   }
 }
 
