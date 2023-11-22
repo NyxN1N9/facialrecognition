@@ -30,7 +30,6 @@ class App extends Component {
     super();
     this.state = initialState; 
   }
-
   //loads user data
   loadUser = (data) => {
     this.setState({
